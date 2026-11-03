@@ -1,3 +1,3 @@
 ## JobHunter :  A Career Guidance Portal
 
-### Made with AI
+### JobHunter is used to find jobs, Filter Jobs, and make a resume and then apply for the best Fit job
