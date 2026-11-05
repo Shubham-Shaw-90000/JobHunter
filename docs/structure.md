@@ -34,3 +34,49 @@ Career_Growth_System/
 ├── docker-compose.yml        # Local services (PostgreSQL, local storage)
 ├── .gitignore                # Root Git ignore rules
 └── README.md                 # Project orientation
+
+
+
+
+
+
+
+API Layer : 
+HTTP Request (Client)
+       │
+       ▼
+[ FastAPI Router ] (`router.py`) — Handles HTTP codes, headers, validation
+       │
+       ▼
+[ Service Layer ] (`service.py`) — Business logic, database queries
+       │
+       ▼
+[ Database ] (PostgreSQL via SQLAlchemy `models.py`)
+
+
+
+DIRECTION OF MOVEMENT
+
+routes.py
+Receives HTTP request
+
+    │
+    ▼
+
+schemas.py
+Validates request data
+     │
+     ▼
+
+service.py
+Business logic
+Decides what operations to perform
+     │
+     ▼
+
+models.py + SQLAlchemy
+Database operations
+     │
+     ▼
+
+PostgreSQL
