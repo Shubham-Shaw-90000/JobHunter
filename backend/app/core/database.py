@@ -2,7 +2,7 @@
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import DeclarativeBase # Provides the delarative mapping system
 from app.core.config import settings
 from typing import Generator
 from sqlalchemy.orm import Session
@@ -13,7 +13,7 @@ engine = create_engine(settings.DATABASE_URL, pool_pre_ping = True) #ppp checks 
 # bind : connects session factory to DB engine 
 SessionLocal = sessionmaker(autocommit=False, autoflush= False, bind=engine) 
 
-class Base(DeclarativeBase):
+class Base(DeclarativeBase): # Acts as the parent class for all the DB models
     pass
 
 def get_db() -> Generator[Session, None, None]:
@@ -22,5 +22,7 @@ def get_db() -> Generator[Session, None, None]:
         yield db # temporarily hands the control and value to the caller function
                  # and pauses the current function to resume later
     finally:
+        # guaranteed to execute even if an unhandled exception or 
+        # crash happens inside the endpoint.
         db.close()
                 

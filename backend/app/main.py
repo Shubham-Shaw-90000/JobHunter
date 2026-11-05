@@ -9,6 +9,9 @@ app = FastAPI(
     version=settings.VERSION
 )
 
+
+# Each HTTP request gets its own independent database session.
+# Multiple users or concurrent requests won't collide.
 @app.get("/health")
 def health_check(db: Session = Depends(get_db)):
     db.execute(text("SELECT 1"))
